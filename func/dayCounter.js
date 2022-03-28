@@ -1,8 +1,5 @@
 import { MessageEmbed, WebhookClient } from "discord.js";
-import userDatas from "./user_data.json";
-
-const DISCORD_ID = process.env.DISCORD_ID;
-const DISCORD_TOKEN = process.env.DISCORD_TOKEN;
+import userDatas from "../user_data.json";
 
 const dayCounter = (targetDay) => {
   const second = 1000;
@@ -48,12 +45,13 @@ const makeMssageEmbed = (messageData) => {
     .setTimestamp();
 };
 
-const webHookClinet = new WebhookClient({
-  id: DISCORD_ID,
-  token: DISCORD_TOKEN,
-});
-
 const sendMessage = () => {
+  const DISCORD_ID = process.env.DISCORD_GENERAL_ID;
+  const DISCORD_TOKEN = process.env.DISCORD_GENERAL_TOKEN;
+  const webHookClinet = new WebhookClient({
+    id: DISCORD_ID,
+    token: DISCORD_TOKEN,
+  });
   userDatas.forEach((messageObject) => {
     webHookClinet.send({ embeds: [makeMssageEmbed(messageObject)] });
   });
