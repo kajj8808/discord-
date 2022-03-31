@@ -6,6 +6,9 @@ const priconneFourCutMangaFilter = async (timeLineList) => {
   )[0];
 };
 
+const getTwitterOriginalImage = (imageURL) =>
+  `${imageURL}?format=jpg&name=orig`;
+  
 const makePriconneMessageEmbed = (messageObj) => {
   const { data, includes } = messageObj;
   const photoImage = includes.media.filter((media) => media.type === "photo")[0]
@@ -16,7 +19,7 @@ const makePriconneMessageEmbed = (messageObj) => {
     .setTitle(title)
     .setColor("#82ccdd")
     .setURL(`https://twitter.com/priconne_kr/status/${id}`)
-    .setImage(photoImage)
+    .setImage(getTwitterOriginalImage(photoImage))
     .setTimestamp();
 };
 

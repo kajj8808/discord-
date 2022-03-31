@@ -8,7 +8,7 @@ schedule.scheduleJob("0 0 0 * * *", () => {
 });
 
 
-schedule.scheduleJob("* 0 8-15 * * *", async () => {
+schedule.scheduleJob("0 0 8-15 * * *", async () => {
   await fourCutMangaWithTwitter("priconne_kr");
 });
 
